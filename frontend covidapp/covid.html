@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Covid-19 Tracker App</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>    
+<link rel="stylesheet" href="main.css">
+</head>
+    <body>
+<div class="container">
+    <header style="background-color:darkslategray;">
+<nav class="navbar navbar-expand-lg static-top">
+<div class="container">
+<a class="navbar-brand" href="#">
+ <img  class="logo" src="logo.PNG" alt="logo" width="50px" height="50px">
+</a>
+<div class="topnav">
+    <a class="active" href="">Home</a>
+    <a href="#news">World Health Organization</a>
+    <a href="#news">Africa Health</a>
+    <a href="#contact">Ghana Health</a>
+    <a href="#about">Contact Us</a>
+  </div>
+</div>
+</nav>
+<br><br>
+<div class="row1 align-items-lg-center">
+    <div class="card align-items-lg-center">
+    <h2>CURRENT WORLD COVID-API RECORDS |BY AMA KRISTOADOM ASANTEWAA</h2>
+    </div>
+    </div>
+    </header>
+    <div class="container pt-4">
+<div class="container pt-5">
+<div class="row row-fluid">
+<div class="col-8 justify-content-center align-items-center">
+<table class="table table-striped table-hover align-middle">
+<thead class="thead-dark">
+<tr>
+    <th scope="col">Countries</th>
+    <th scope="col">Active Cases</th>
+    <th scope="col">Recovered</th>
+    <th scope="col">Total Deaths</th>
+    <th scope="col">Total Cases</th>
+</tr>    
+</thead>
+<tbody class="result"></tbody>
+<script>
+$.ajax({
+  type: 'GET',
+  url: 'https://disease.sh/v3/covid-19/countries',
+  dataType: 'json',
+  success: function (response) {
+    console.log(typeof(response));
+    var trHTML = '';
+    for(var f=0;f<response.length;f++) {
+      trHTML += '<tr><td>' + 
+      response[f]['country']+
+      '</td><td>'+
+      response[f]['active'] +
+      '</td><td>'+
+      response[f]['recovered']+
+      '</td><td>'+
+      response[f]['deaths']+
+      '</td><td>'+
+      response[f]['cases']+
+      '</td></tr>';
+     }
+    $('.result').html(trHTML); 
+    $( ".spin-grid" ).removeClass( "fa-spin" );
+  }
+});
+</script>
+</table>
+</div>
+<div class="col-4">
+    <div class="row row-fluid justify-content-center align-items-center">
+    <div class="col w-100 h-50 pt-4">
+    <div class="card">
+    <div class="card-body">
+    <div class="text-center">
+    <button class="card-title btn btn-info"> Click Here</button>
+        <image src="cor10.jpg" width="100px" height="70px"/>
+    </div>
+    </div>
+     </div>
+    </div>
+     </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="col w-45 h-25 pt-4">
+    <div class="card">
+    <div class="card-body">  
+    <div class="text-center">
+     <button class="card-title btn btn-secondary">Preventive Measures</button>
+    <img src="COVID_19.png" width="125px" height="90px"/>
+    </div>
+    </div>
+    </div>
+</div>
+</div>
+    </div>
+</div>
+    </body>
+</html>
